@@ -1,10 +1,3 @@
-//
-//  Mindwave Mobile parser
-//  Based on the Mindwave Arduino sample: http://developer.neurosky.com/docs/doku.php?id=mindwave_mobile_and_arduino
-//  and the ThinkGear Protocol specs: http://developer.neurosky.com/docs/doku.php?id=thinkgear_communications_protocol
-//  Created by George Profenza on 03/04/2015.
-//
-
 #ifndef Mindwave_h
 #define Mindwave_h
 

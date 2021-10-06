@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Transmiter",
+			"path": "Transmiter"
+		},
+		{
+			"name": "Decoder",
+			"path": "Decoder"
+		}
+	],
+	"settings": {}
+}

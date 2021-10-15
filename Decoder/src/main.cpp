@@ -15,14 +15,30 @@ Mindwave mindwave;
 
 unsigned long int last;
 bool first_read = false;
-unsigned int timeout = 1500;
+unsigned int timeout = 2500;
 
 const char *pin = "0000"; //<- standard pin would be provided by default
+
+void print_mac(uint8_t mac[6]) {
+  Serial.print(mac[0],HEX);
+  Serial.print(":");
+  Serial.print(mac[1],HEX);
+  Serial.print(":");
+  Serial.print(mac[2],HEX);
+  Serial.print(":");
+  Serial.print(mac[3],HEX);
+  Serial.print(":");
+  Serial.print(mac[4],HEX);
+  Serial.print(":");
+  Serial.print(mac[5],HEX);
+}
 
 void neuro_connect() {
   first_read = false;
   SerialBT.disconnect();
-  Serial.println("Connecting...");
+  Serial.print("Connecting to BT ");
+  print_mac(address);
+  Serial.println("...");
   while(!SerialBT.connect(address))
       Serial.println("Failed... Make sure remote device is available and in range");
   Serial.println("Connected Succesfully!");
@@ -40,7 +56,6 @@ void setup() {
 
 void onMindwaveData() {
   StaticJsonDocument<512> doc;
-  first_read = true;
   last = millis();
   doc["name"] = NAME;
   doc["quality"] = mindwave.quality();
@@ -56,6 +71,7 @@ void onMindwaveData() {
 
 
 void loop() {
-  mindwave.update(SerialBT,onMindwaveData);
   if(millis() - last > timeout && first_read) ESP.restart();
+  mindwave.update(SerialBT,onMindwaveData);
+  first_read = true;
 }

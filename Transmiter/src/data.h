@@ -19,7 +19,7 @@
 
 #elif LOCAL == PRODUCAO
   #define PORT 5005
-  #define DEST "192.168.0.99"
+  #define DEST "192.168.1.99"
   #define SSID "HERMES_SYS"
   #define PASS "losCavalos0412"
   #define ADMIN_PASS "losCavalos"
